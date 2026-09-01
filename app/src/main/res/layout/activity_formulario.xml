@@ -10,24 +10,44 @@
     android:background="#21EBE4">
 
 
+    <ImageView
+        android:id="@+id/iconoRegistro"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:contentDescription="Icono de estudiante"
+        android:src="@drawable/ic_person"
+        app:layout_constraintBottom_toTopOf="@+id/Titulo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
     <TextView
         android:id="@+id/Titulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Formulario"
+        android:layout_marginTop="14dp"
+        android:text="Registro de estudiante"
         android:textSize="26sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/nombre"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iconoRegistro"
         />
 
     <EditText
         android:id="@+id/nombre"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
         android:layout_marginVertical="10dp"
+        android:background="@drawable/input_background"
+        android:drawableStart="@drawable/ic_person"
+        android:drawablePadding="8dp"
         android:hint="Ingrese su nombre"
+        android:minHeight="50dp"
+        android:padding="12dp"
         app:layout_constraintTop_toBottomOf="@+id/Titulo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,8 +57,14 @@
         android:id="@+id/edad"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:background="@drawable/input_background"
+        android:drawableStart="@drawable/ic_age"
+        android:drawablePadding="8dp"
         android:hint="Ingrese su Edad"
+        android:inputType="number"
         android:layout_marginVertical="10dp"
+        android:minHeight="50dp"
+        android:padding="12dp"
         app:layout_constraintTop_toBottomOf="@+id/nombre"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -48,31 +74,30 @@
         android:id="@+id/email"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:background="@drawable/input_background"
+        android:drawableStart="@drawable/ic_email"
+        android:drawablePadding="8dp"
         android:hint="Ingrese su Email"
+        android:inputType="textEmailAddress"
         android:layout_marginVertical="10dp"
+        android:minHeight="50dp"
+        android:padding="12dp"
         app:layout_constraintTop_toBottomOf="@+id/edad"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
 
         />
 
-    <EditText
-        android:id="@+id/contraseña"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Ingrese su contraseña"
-        android:layout_marginVertical="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/email"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        />
-
     <Button
         android:id="@+id/enviar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enviar"
-        app:layout_constraintTop_toBottomOf="@+id/contraseña"
+        android:layout_marginTop="18dp"
+        android:backgroundTint="#263238"
+        android:text="Crear registro"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/email"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 

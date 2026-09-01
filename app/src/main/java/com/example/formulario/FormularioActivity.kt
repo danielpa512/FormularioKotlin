@@ -1,5 +1,6 @@
 package com.example.formulario
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -25,26 +26,32 @@ class FormularioActivity : AppCompatActivity() {
         val nombre = findViewById<EditText>(R.id.nombre)
         val edad = findViewById<EditText>(R.id.edad)
         val email = findViewById<EditText>(R.id.email)
-        val contraseña = findViewById<EditText>(R.id.contraseña)
         val botonEnviar = findViewById<Button>(R.id.enviar)
 
         botonEnviar.setOnClickListener {
             val TextNombre = nombre.text.toString()
             val Tedad = edad.text.toString()
             val Temail = email.text.toString()
-            val Tcontraseña = contraseña.text.toString()
 
-            Toast.makeText(
-                this,
-                "Hola $TextNombre , tienes una edad de $Tedad años \n tu Correo Electronico es: $Temail ",
-                Toast.LENGTH_LONG
-            ).show()
+            if (TextNombre.isBlank() || Tedad.isBlank() || Temail.isBlank()) {
+                Toast.makeText(this, "Completa todos los campos", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
 
-            AlertDialog.Builder(this)
-                .setTitle("Enviado")
-                .setMessage("Hola $TextNombre , tienes una edad de $Tedad años \n tu Correo Electronico es: $Temail ")
-                .setPositiveButton("Aceptar",null)
-                .show()
+            val edadNumero = Tedad.toIntOrNull()
+
+            if (edadNumero == null) {
+                Toast.makeText(this, "La edad debe ser un numero", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            val estudiante1 = student(TextNombre, edadNumero, Temail)
+
+            var intent = Intent(this, ActivityShow::class.java)
+
+            intent.putExtra("estudiante", estudiante1)
+
+            startActivity(intent)
 
         }
 
